@@ -7,6 +7,7 @@ const SignupPage = () => {
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
   const [isShow, setIsShow] = useState(false);
+  const [email, setEmail] = useState("");
   const toggleModal = () => {
     return setIsShow(!isShow);
   };
@@ -41,6 +42,16 @@ const SignupPage = () => {
                     onChange={(e) => setMobile(e.target.value)}
                   />
                 </div>
+              </div>
+              <div className=" mt-4 mb-3 text-start credContainer">
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Email Id"
+                  value={email}
+                  required={true}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
               <div className=" mt-4 mb-3 text-start credContainer">
                 <input
