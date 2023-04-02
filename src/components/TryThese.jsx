@@ -3,11 +3,14 @@ import Button from "./Button";
 
 const tryThese = () => (
   <>
-    <section className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}>
+    <section
+      className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}
+    >
       <div className="flex-1 flex flex-col">
         <h2 className={styles.heading2}>Check Your Risk for Heart Disease</h2>
         <p className={`${styles.paragraph} max-w-[570px] mt-5`}>
-          Predicting the Risk for Developing Heart Disease has been Made Easy Just for You. Find Your Risk Score in just a Few Clicks.
+          Predicting the Risk for Developing Heart Disease has been Made Easy
+          Just for You. Find Your Risk Score in just a Few Clicks.
         </p>
       </div>
 
@@ -16,11 +19,14 @@ const tryThese = () => (
       </div>
     </section>
 
-    <section className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}>
+    <section
+      className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}
+    >
       <div className="flex-1 flex flex-col">
         <h2 className={styles.heading2}>Let’s Improve your Diet!</h2>
         <p className={`${styles.paragraph} max-w-[670px] mt-5`}>
-          Everything you need to know about your Diet to have the Healthiest Heart.
+          Everything you need to know about your Diet to have the Healthiest
+          Heart.
         </p>
       </div>
 
@@ -29,11 +35,15 @@ const tryThese = () => (
       </div>
     </section>
 
-    <section className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}>
+    <section
+      className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}
+    >
       <div className="flex-1 flex flex-col">
         <h2 className={styles.heading2}>Get the Best Recommended Doctors</h2>
         <p className={`${styles.paragraph} max-w-[570px] mt-5`}>
-          No Need to Spend Time Looking for the Best Doctor. You will get the Highest Quality Care and Support from the Doctors that we Recommend for You.
+          No Need to Spend Time Looking for the Best Doctor. You will get the
+          Highest Quality Care and Support from the Doctors that we Recommend
+          for You.
         </p>
       </div>
 
@@ -41,12 +51,6 @@ const tryThese = () => (
         <Button />
       </div>
     </section>
-
-    <div className="w-full pt-6 pb-12 border-t-[1px] border-t-[#3F3E45]">
-      <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white">
-        Copyright Ⓒ 2023 Heart Buddy. All Rights Reserved.
-      </p>
-    </div>
   </>
 );
 

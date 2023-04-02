@@ -1,38 +1,57 @@
-import styles from './style';
-import { Navbar, Home, Card, TryThese } from './components';
-import 'bootstrap/dist/css/bootstrap.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navbar, PublicRoute, Footer, ProtectedRoute } from "./components";
+import { HomePage, LandingPage, LoginPage, SignupPage } from "./pages";
 
+import styles from "./style";
+import "bootstrap/dist/css/bootstrap.css";
 
-const App = () => (
-  <div className='bg-darkBlue w-full overfow-hidden'>
-    <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-      <Navbar />
+const App = () => {
+  return (
+    <div className="bg-darkBlue w-full overfow-hidden">
+      <Router>
+        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+          <Navbar />
+        </div>
+        <hr />
+        <Routes>
+          <Route
+            path="/"
+            exact
+            element={
+              <PublicRoute>
+                <LandingPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute>
+                <SignupPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Router>
+      <Footer />
     </div>
-    {/* 
-    <div>
-      <Button1/>
-    </div> */}
-    <div className={`bg-darkBlue ${styles.flexStart}`}>
-      <div className={`${styles.boxWidth}`}>
-        <Home />
-      </div>
-    </div>
-    <div className={` ${styles.paddingX} ${styles.flexStart} `}>
-      <div className={`container`}>
-        <Card />
-      </div>
-    </div>
+  );
+};
 
-    <div className={` ${styles.paddingX} ${styles.flexStart} `}>
-      <div className={`${styles.boxWidth}`}>
-        <TryThese />
-      </div>
-    </div>
-
-
-  </div>
-
-);
-
-
-export default App
+export default App;
