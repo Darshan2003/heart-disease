@@ -6,6 +6,7 @@ const SignupPage = () => {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   const [isShow, setIsShow] = useState(false);
   const toggleModal = () => {
     return setIsShow(!isShow);
@@ -57,9 +58,9 @@ const SignupPage = () => {
                   type="password"
                   className="form-control"
                   placeholder="Re-enter Password"
-                  value={password}
+                  value={password2}
                   required={true}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPassword2(e.target.value)}
                 />
               </div>
 
