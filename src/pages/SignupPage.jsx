@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { OTPModal } from "../components";
 import { backendUrl } from "../definitions";
 import axios from "axios";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 const SignupPage = () => {
   const [name, setName] = useState("");
@@ -140,7 +140,7 @@ const SignupPage = () => {
           </div>
         </div>
       </div>
-      <OTPModal isShow={isShow} toggleModal={toggleModal} mobile={mobile} />
+      <OTPModal isShow={isShow} toggleModal={toggleModal} mobile={mobile} password={password} />
     </div>
   );
 };
