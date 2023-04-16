@@ -237,9 +237,9 @@ const HomePage = () => {
                 val={thal}
                 func={setThal}
                 options={[
-                  { value: 1, label: "1" },
-                  { value: 2, label: "2" },
-                  { value: 3, label: "3" },
+                  { value: 1, label: "Normal" },
+                  { value: 2, label: "Fixed Defect" },
+                  { value: 3, label: "Reversible Defect" },
                 ]}
               />
               <FieldContainer
