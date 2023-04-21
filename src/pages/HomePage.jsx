@@ -3,6 +3,7 @@ import { FieldContainer, PredictionModal } from "../components";
 import axios from "axios";
 import "../stylesheets/HomePage.css";
 import toast, { Toaster } from "react-hot-toast";
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import {
   setAge,
@@ -21,6 +22,7 @@ import {
 } from "../redux/infoSlice";
 import { backendUrl } from "../utils";
 const HomePage = () => {
+  const location = useLocation();
   const [isShow, setIsShow] = useState(false);
   const [percentage, setPercentage] = useState(0);
   const toggleModal = () => {
@@ -58,7 +60,15 @@ const HomePage = () => {
       !ca
     ) {
       toast.error("Please enter all fields");
+      return;
     }
+
+    //check if the mobile is present in session storage if not then toast error
+    if(sessionStorage.getItem("mobile") === null){
+      toast.error("Please login first");
+      return;
+    }
+
 
     const formData = {
       age: age,
@@ -73,11 +83,11 @@ const HomePage = () => {
       oldpeak: oldpeak,
       slope: slope,
       ca: ca,
-      thal: thal,
+      thal: thal
     };
 
     try {
-      let res = await axios.post(`${backendUrl}/predict`, formData);
+      let res = await axios.post(`${backendUrl}/predict?mobile=${sessionStorage.getItem("mobile")}`, formData);
       console.log(res.data);
 
       if (res.data?.SUCCESS) {
