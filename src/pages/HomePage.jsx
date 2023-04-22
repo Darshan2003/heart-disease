@@ -64,11 +64,10 @@ const HomePage = () => {
     }
 
     //check if the mobile is present in session storage if not then toast error
-    if(sessionStorage.getItem("mobile") === null){
+    if (sessionStorage.getItem("mobile") === null) {
       toast.error("Please login first");
       return;
     }
-
 
     const formData = {
       age: age,
@@ -83,11 +82,14 @@ const HomePage = () => {
       oldpeak: oldpeak,
       slope: slope,
       ca: ca,
-      thal: thal
+      thal: thal,
     };
 
     try {
-      let res = await axios.post(`${backendUrl}/predict?mobile=${sessionStorage.getItem("mobile")}`, formData);
+      let res = await axios.post(
+        `${backendUrl}/predict?mobile=${sessionStorage.getItem("mobile")}`,
+        formData
+      );
       console.log(res.data);
 
       if (res.data?.SUCCESS) {
