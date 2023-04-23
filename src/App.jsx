@@ -10,6 +10,7 @@ import {
 import styles from "./style";
 import "bootstrap/dist/css/bootstrap.css";
 import { useState } from "react";
+import Profile from "./pages/Profile";
 
 const App = () => {
   const [user, setUser] = useState(false);
@@ -60,6 +61,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <NearByPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile/>
               </ProtectedRoute>
             }
           />
