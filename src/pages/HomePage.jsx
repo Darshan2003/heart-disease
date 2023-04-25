@@ -40,7 +40,7 @@ export default function HomePage() {
           <hr className="text-white w-[90%] mt-2" />
 
           <div className="text-xl text-white font-bold mt-8 text-left">
-            Sex: {data?.sex == 1 ? "Male" : "Female"}
+            Sex: {data?.sex == undefined ? "" :data.sex? "Male" : "Female"}
           </div>
 
           <div className="text-md text-white mt-2 text-left">
