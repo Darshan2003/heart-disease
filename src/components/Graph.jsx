@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,10 +8,10 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
-import axios from 'axios';
-import { backendUrl } from '../utils';
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+import axios from "axios";
+import { backendUrl } from "../utils";
 
 ChartJS.register(
   CategoryScale,
@@ -28,43 +28,44 @@ const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'top',
+      position: "top",
     },
-    
 
     title: {
       display: true,
-      text: sessionStorage.getItem("name").toUpperCase() + '\'s Heart Disease Risk History',
+      text:
+        sessionStorage.getItem("name")?.toUpperCase() +
+        "'s Heart Disease Risk History",
     },
   },
   scales: {
     y: {
       min: 0,
       max: 100,
-    }
-  }
-
+    },
+  },
 };
 
-
-
 export default function Graph() {
-
   const [data, setData] = useState([]);
   const getData = async () => {
     const formData = {
       mobile: sessionStorage.getItem("mobile"),
-    }
+    };
     try {
       let res = await axios.post(`${backendUrl}/gethistory`, formData);
       if (res.data) {
         console.log(res.data);
         // const dates = res.data.RESULT.map((item) => item.dates.substring(8,10) + '/' + item.dates.substring(5,7) + '/' + item.dates.substring(0,4));
         let dates = res.data.RESULT.map((item) => {
-          const other = {...item};
+          const other = { ...item };
           delete other.date;
           delete other.result;
-          return { dates: new Date(item.date), result: item.result * 100, ...other }
+          return {
+            dates: new Date(item.date),
+            result: item.result * 100,
+            ...other,
+          };
         });
         dates.sort((a, b) => a.dates - b.dates);
         dates = dates.map((item) => {
@@ -87,7 +88,6 @@ export default function Graph() {
         });
         console.log(dates);
 
-        
         setData(dates);
       } else {
         toast.error("Some Error Occurred!");
@@ -101,21 +101,24 @@ export default function Graph() {
     labels: data.map((item) => item.dates),
     datasets: [
       {
-        label: 'Heart Disease Risk (%)',
+        label: "Heart Disease Risk (%)",
         data: data.map((item) => item.result),
-        borderColor: '#f25c70',
-        backgroundColor: '#f25c70',
-      }
+        borderColor: "#f25c70",
+        backgroundColor: "#f25c70",
+      },
     ],
-
   };
   useEffect(() => {
     getData();
-  }, [])
+  }, []);
 
   return (
-    <div className='w-[800px]'>
-      <Line className='bg-blue-gradient rounded-lg p-4' options={options} data={dataSchema}  />
+    <div className="w-[800px]">
+      <Line
+        className="bg-blue-gradient rounded-lg p-4"
+        options={options}
+        data={dataSchema}
+      />
     </div>
   );
 }

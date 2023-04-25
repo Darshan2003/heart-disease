@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar, PublicRoute, Footer, ProtectedRoute } from "./components";
 import {
   HomePage,
+  FormPage,
   LandingPage,
   LoginPage,
   NearByPage,
@@ -9,12 +10,15 @@ import {
 } from "./pages";
 import styles from "./style";
 import "bootstrap/dist/css/bootstrap.css";
-import { useState } from "react";
-import Profile from "./pages/Profile";
+import { useEffect, useState } from "react";
+import Profile from "./pages/HomePage";
 
 const App = () => {
   const [user, setUser] = useState(false);
   // console.log(import.meta.env.VITE_MAPS_API);
+  useEffect(() => {
+    sessionStorage.mobile ? setUser(true) : setUser(false);
+  });
   return (
     <div className="bg-darkBlue w-full overfow-hidden">
       <Router>
@@ -57,6 +61,14 @@ const App = () => {
             }
           />
           <Route
+            path="/assess"
+            element={
+              <ProtectedRoute>
+                <FormPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/map"
             element={
               <ProtectedRoute>
@@ -68,7 +80,7 @@ const App = () => {
             path="/profile"
             element={
               <ProtectedRoute>
-                <Profile/>
+                <Profile />
               </ProtectedRoute>
             }
           />
