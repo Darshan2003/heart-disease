@@ -46,7 +46,6 @@ const FormPage = () => {
     ca,
   } = useSelector((store) => store.info);
   const predict = async () => {
-
     if (
       !sex ||
       !age ||
@@ -101,7 +100,8 @@ const FormPage = () => {
         setIsShow(!isShow);
         setLoading(false);
         toast(
-          `Your risk of developing a heart disease is ${res.data.PERCENTAGE * 100
+          `Your risk of developing a heart disease is ${
+            res.data.PERCENTAGE * 100
           }%`,
           { icon: "⚠️", duration: 4000 }
         );
@@ -112,15 +112,14 @@ const FormPage = () => {
   };
   return (
     <div id="homePage" className="m-0 p-0 h-[100vh] w-[100vw]">
-      {
-        loading ? <>
-          <div className="absolute w-screen h-screen bg-gray-900 top-0 left-0 z-[98] opacity-50">
-          </div>
-          <div className='absolute z-[99] top-1/2 left-1/2 '>
+      {loading ? (
+        <>
+          <div className="absolute w-screen h-screen bg-gray-900 top-0 left-0 z-[98] opacity-50"></div>
+          <div className="absolute z-[99] top-1/2 left-1/2 ">
             <Waveform size={40} color="cyan" />
           </div>
-        </> : null
-      }
+        </>
+      ) : null}
       <Toaster />
       <div
         className={`font-poppins font-bold cursor-pointer text-[20px] text-gradient ml-1 text-center mt-1 mb-3`}
@@ -279,7 +278,6 @@ const FormPage = () => {
                   { value: 1, label: "1" },
                   { value: 2, label: "2" },
                   { value: 3, label: "3" },
-                  { value: 4, label: "4" },
                 ]}
               />
             </div>

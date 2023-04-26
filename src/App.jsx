@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { Navbar, PublicRoute, Footer, ProtectedRoute } from "./components";
 import {
   HomePage,
@@ -93,6 +98,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
       <Footer />
