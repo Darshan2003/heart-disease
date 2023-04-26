@@ -12,6 +12,7 @@ import styles from "./style";
 import "bootstrap/dist/css/bootstrap.css";
 import { useEffect, useState } from "react";
 import Profile from "./pages/HomePage";
+import Research from "./pages/Research";
 
 const App = () => {
   const [user, setUser] = useState(false);
@@ -81,6 +82,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/research"
+            element={
+              <ProtectedRoute>
+                <Research />
               </ProtectedRoute>
             }
           />
