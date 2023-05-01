@@ -135,7 +135,7 @@ const NearByPage = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container h-screen">
        {
         loading ? <>
           <div className="absolute w-screen h-screen bg-gray-900 top-0 left-0 z-[98] opacity-50">
