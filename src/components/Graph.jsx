@@ -23,31 +23,32 @@ ChartJS.register(
   Legend
 );
 
-//y axis scale from 0 to 100
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-
-    title: {
-      display: true,
-      text:
-        sessionStorage.getItem("name")?.toUpperCase() +
-        "'s Heart Disease Risk History",
-    },
-  },
-  scales: {
-    y: {
-      min: 0,
-      max: 100,
-    },
-  },
-};
 
 export default function Graph() {
   const [data, setData] = useState([]);
+  
+//y axis scale from 0 to 100
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+
+      title: {
+        display: true,
+        text:
+          sessionStorage?.getItem("name").toUpperCase() +
+          "'s Heart Disease Risk History",
+      },
+    },
+    scales: {
+      y: {
+        min: 0,
+        max: 100,
+      },
+    },
+  };
   const getData = async () => {
     const formData = {
       mobile: sessionStorage.getItem("mobile"),
